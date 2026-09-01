@@ -56,7 +56,7 @@ Tout se règle dans **`src/config/site.ts`**.
 
 Le nom public du format est `cafe.name` (« Les soirs d'Europe », décidé le 25 août 2026) et l’accroche `cafe.tagline` (« Un verre, l'Europe. »). Ne pas publier « Café européen » sur le site public : ce nom est déjà porté par la Maison de l'Europe (séance thématique, un mardi par mois, Le Punch).
 
-### Prochain як soir et calendrier
+### Prochain soir et calendrier
 
 Le prochain soir affiché est la **première date encore à venir** de `cafeCalendar`. Pour ajouter ou corriger une soirée, éditer ce tableau :
 
