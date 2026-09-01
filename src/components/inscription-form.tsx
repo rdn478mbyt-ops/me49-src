@@ -121,9 +121,17 @@ export function InscriptionForm({
       </Field>
 
       {error ? (
-        <p role="alert" className="text-sm font-medium text-red-700">
-          {error}
-        </p>
+        <div role="alert" className="space-y-2 text-sm font-medium text-red-700">
+          <p>{error}</p>
+          <p>
+            <a
+              className="underline underline-offset-2"
+              href={`mailto:${site.registration.notifyEmail}?subject=${encodeURIComponent("Inscription — Soir d'Europe 8 septembre")}`}
+            >
+              Écrire à {site.registration.notifyEmail}
+            </a>
+          </p>
+        </div>
       ) : null}
 
       <Button type="submit" size="xl" className="w-full sm:w-auto">
