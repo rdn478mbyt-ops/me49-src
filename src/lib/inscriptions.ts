@@ -26,7 +26,7 @@ export type PersistResult = {
 const EVENT_DATE = site.registration.eventDate
 const EVENT_TITLE = "Les soirs d'Europe — 8 septembre"
 
-/** Base confiée par William pour le 8 septembre. */
+/** Base «ée par William pour le 8 septembre. */
 export const NOTION_DATABASE_ID =
   process.env.NOTION_DATABASE_ID ?? "0113b1a0e499473082b72c86ab838ae6"
 const NOTION_DATA_SOURCE_ID =
