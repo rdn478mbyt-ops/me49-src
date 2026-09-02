@@ -9,18 +9,30 @@ function isLocalhost(url) {
   return /127\.0\.0\.1|localhost/.test(url)
 }
 
+function isLegacyVercelHost(url) {
+  return /(?:^|[/.])me49\.vercel\.app(?:\/|$)/.test(url)
+}
+
 function publicSiteUrl(env) {
   const explicit = env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "")
-  if (explicit && !isLocalhost(explicit)) return explicit
+  if (explicit && !isLocalhost(explicit) && !isLegacyVercelHost(explicit)) {
+    return explicit
+  }
   const vercelHost = env.VERCEL_PROJECT_PRODUCTION_URL?.replace(
     /^https?:\/\//,
     ""
   )
-  if (vercelHost && !isLocalhost(vercelHost)) {
+  if (
+    vercelHost &&
+    !isLocalhost(vercelHost) &&
+    !isLegacyVercelHost(vercelHost)
+  ) {
     return `https://${vercelHost}`
   }
-  if (env.VERCEL) return "https://me49.vercel.app"
-  return explicit || "http://127.0.0.1:4349"
+  if (env.VERCEL) return "https://mouvement-europeen49.fr"
+  return explicit && !isLegacyVercelHost(explicit)
+    ? explicit
+    : "http://127.0.0.1:4349"
 }
 
 describe("hasDurableChannel", () => {
@@ -69,14 +81,21 @@ describe("hasDurableChannel", () => {
   it("en production, robots n'utilise pas localhost", () => {
     assert.equal(
       publicSiteUrl({ VERCEL: "1" }),
-      "https://me49.vercel.app"
+      "https://mouvement-europeen49.fr"
     )
     assert.equal(
       publicSiteUrl({
         VERCEL: "1",
         NEXT_PUBLIC_SITE_URL: "http://127.0.0.1:4349",
       }),
-      "https://me49.vercel.app"
+      "https://mouvement-europeen49.fr"
+    )
+    assert.equal(
+      publicSiteUrl({
+        VERCEL: "1",
+        NEXT_PUBLIC_SITE_URL: "https://me49.vercel.app",
+      }),
+      "https://mouvement-europeen49.fr"
     )
   })
 })
