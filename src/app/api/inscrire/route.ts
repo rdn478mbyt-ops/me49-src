@@ -24,10 +24,16 @@ function publicOrigin(request: Request): string {
   if (host.startsWith("127.0.0.1") || host.startsWith("localhost")) {
     return `${proto}://${host}`
   }
-  if (host === "me49.vercel.app" || host.endsWith(".me49.vercel.app")) {
+  const hostname = host.split(":")[0] ?? ""
+  if (
+    hostname === "mouvement-europeen49.fr" ||
+    hostname === "www.mouvement-europeen49.fr" ||
+    hostname === "me49.vercel.app" ||
+    hostname.endsWith(".me49.vercel.app")
+  ) {
     return `${proto}://${host}`
   }
-  return configured || "https://me49.vercel.app"
+  return configured || "https://mouvement-europeen49.fr"
 }
 
 function fail(origin: string, message: string) {
