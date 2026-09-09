@@ -11,7 +11,7 @@ import { getConfirmedVenue } from "@/lib/content"
 export const metadata: Metadata = {
   title: "Rejoindre la communauté",
   description:
-    "Pour rejoindre le Mouvement européen Maine-et-Loire, le plus simple est de venir à un soir d'Europe, à 20h à La Cour. Premier rendez-vous : mardi 8 septembre, puis un mercredi sur deux.",
+    "Pour rejoindre le Mouvement européen Maine-et-Loire, le plus simple est de venir à un soir d'Europe, à 20h à La Cour. Prochain rendez-vous : mercredi 16 septembre, puis un mercredi sur deux.",
 }
 
 export default function RejoindrePage() {
@@ -34,7 +34,7 @@ export default function RejoindrePage() {
             <p className="mt-6 text-lg leading-relaxed">
               La plupart des personnes commencent par venir
               {venue ? `, à ${venue.name}` : " à Angers"}, un mercredi à 20h.
-              Le premier rendez-vous de rentrée est mardi 8 septembre. Si la
+              Le prochain rendez-vous est mercredi 16 septembre. Si la
               soirée vous plaît, vous pouvez revenir, puis contribuer à votre
               rythme.
             </p>

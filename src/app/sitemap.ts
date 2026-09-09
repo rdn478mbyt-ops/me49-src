@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     ...nav.map((item) => item.href),
     site.registration.path,
+    site.archive.path,
     "/rejoindre",
   ]
 
@@ -17,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority:
       path === "/" || path === "/nous-rencontrer" || path === site.registration.path
         ? 1
-        : 0.6,
+        : path === site.archive.path
+          ? 0.3
+          : 0.6,
   }))
 }

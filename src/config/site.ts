@@ -27,11 +27,18 @@ export const site = {
 
   
   registration: {
-    path: "/8-septembre",
-    eventDate: "2026-09-08",
-    cta: "S'inscrire au 8 septembre",
+    path: "/16-septembre",
+    eventDate: "2026-09-16",
+    cta: "S'inscrire au 16 septembre",
     notifyEmail: "william.benaissa@gmail.com",
     maxParty: 6,
+  },
+
+  /** Premier soir de la rentrée, conservé en archive. */
+  archive: {
+    path: "/8-septembre",
+    eventDate: "2026-09-08",
+    label: "Premier soir de la rentrée",
   },
 
   
@@ -69,7 +76,7 @@ export const site = {
     timeLabel: "20h",
     cadence: "Un mercredi sur deux, 20h à Angers",
     rhythm:
-      "Le premier rendez-vous de rentrée est mardi 8 septembre. À partir du 16 septembre, c’est un mercredi sur deux, à 20h, à La Cour.",
+      "À partir du 16 septembre, un mercredi sur deux, à 20h, à La Cour.",
     
     venue: {
       confirmed: true,
