@@ -144,14 +144,14 @@ export function getHomepageMoments(): Moment[] {
   }
 
   const cafeMoments: Moment[] = upcoming.map((session) => {
-    const isFirst = session.date === site.registration.eventDate
+    const isOpenForSignup = session.date === site.registration.eventDate
     return {
       id: `cafe-${session.date}`,
       kind: "cafe" as const,
       kindLabel: kindLabels.cafe,
       title: getPublicSessionTitle(session),
       summary: [session.note, getPublicPlaceLabel()].filter(Boolean).join(" "),
-      href: isFirst ? site.registration.path : "/agenda",
+      href: isOpenForSignup ? site.registration.path : "/agenda",
       dateLabel: `${formatFrenchDate(session.date)}, ${site.cafe.timeLabel}`,
     }
   })

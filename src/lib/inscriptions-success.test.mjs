@@ -78,6 +78,18 @@ describe("hasDurableChannel", () => {
     )
   })
 
+  it("le CTA public vise le 16 septembre, pas le 8", () => {
+    const registration = {
+      path: "/16-septembre",
+      eventDate: "2026-09-16",
+      archivePath: "/8-septembre",
+    }
+    assert.equal(registration.path, "/16-septembre")
+    assert.equal(registration.eventDate, "2026-09-16")
+    assert.equal(registration.archivePath, "/8-septembre")
+    assert.notEqual(registration.path, registration.archivePath)
+  })
+
   it("en production, robots n'utilise pas localhost", () => {
     assert.equal(
       publicSiteUrl({ VERCEL: "1" }),

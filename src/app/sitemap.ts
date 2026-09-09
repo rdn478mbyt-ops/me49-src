@@ -8,6 +8,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     ...nav.map((item) => item.href),
     site.registration.path,
+    site.registration.archivePath,
     "/rejoindre",
   ]
 

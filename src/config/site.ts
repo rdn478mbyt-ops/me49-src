@@ -27,11 +27,12 @@ export const site = {
 
   
   registration: {
-    path: "/8-septembre",
-    eventDate: "2026-09-08",
-    cta: "S'inscrire au 8 septembre",
+    path: "/16-septembre",
+    eventDate: "2026-09-16",
+    cta: "S'inscrire au 16 septembre",
     notifyEmail: "william.benaissa@gmail.com",
     maxParty: 6,
+    archivePath: "/8-septembre",
   },
 
   
@@ -69,7 +70,7 @@ export const site = {
     timeLabel: "20h",
     cadence: "Un mercredi sur deux, 20h à Angers",
     rhythm:
-      "Le premier rendez-vous de rentrée est mardi 8 septembre. À partir du 16 septembre, c’est un mercredi sur deux, à 20h, à La Cour.",
+      "Les soirs d’Europe, un mercredi sur deux, à 20h, à La Cour. Prochain rendez-vous : mercredi 16 septembre 2026.",
     
     venue: {
       confirmed: true,
@@ -98,7 +99,8 @@ export const cafeCalendar: CafeSession[] = [
   {
     date: "2026-09-16",
     title: "Les soirs d'Europe",
-    note: "",
+    note: "Sans invité.",
+    format: "libre",
   },
   {
     date: "2026-09-30",

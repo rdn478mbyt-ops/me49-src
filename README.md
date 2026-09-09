@@ -1,6 +1,6 @@
 # Mouvement Européen · Maine-et-Loire (ME49)
 
-Site du Mouvement européen Maine-et-Loire. Interface en français. Le rendez-vous public s’appelle **Les soirs d'Europe** : un mercredi sur deux, à 20h, à La Cour (Angers). Exception de rentrée : **mardi 8 septembre 2026**.
+Site du Mouvement européen Maine-et-Loire. Interface en français. Le rendez-vous public s’appelle **Les soirs d'Europe** : un mercredi sur deux, à 20h, à La Cour (Angers). Prochain soir : **mercredi 16 septembre 2026**.
 
 Signature (une seule fois, à l’accueil) : **L’Europe se vit ici.**
 
@@ -26,19 +26,20 @@ Variable optionnelle pour le domaine public (sitemap, Open Graph) :
 NEXT_PUBLIC_SITE_URL=https://votre-domaine.fr
 ```
 
-## Inscriptions (8 septembre)
+## Inscriptions (16 septembre)
 
-Page publique : **`/8-septembre`**.
+Page publique : **`/16-septembre`**. L’ancienne page **`/8-septembre`** reste en archive, avec un lien vers le 16.
 
-Chaque envoi réel doit atterrir dans la base Notion **Inscriptions — Soir d’Europe 8 sept** et, si `RESEND_API_KEY` est posé, dans la boîte `william.benaissa@gmail.com`. Un fichier local `data/` sert seulement en développement. Sur Vercel, un écriture dans `/tmp` ne compte pas : le formulaire n’affiche un succès que si Notion, Resend ou Blob a bien enregistré la ligne.
+Chaque envoi réel doit atterrir dans la base Notion **Inscriptions — Soir d’Europe 8 sept** et, si `RESEND_API_KEY` est posé, dans la boîte `william.benaissa@gmail.com`. Un fichier local `data/` sert seulement en développement. Sur Vercel, une écriture dans `/tmp` ou Blob ne compte pas : le formulaire n’affiche un succès que si Notion ou l’e-mail a bien enregistré la ligne. Sinon le visiteur voit une erreur, jamais `ok=1`.
 
-Variables côté serveur (Vercel, projet **`me49`**, celui de [me49.vercel.app](https://me49.vercel.app/)) :
+Variables côté serveur (Vercel, projet **`me49`**) :
 
 ```bash
 NOTION_TOKEN=secret_ou_ntn_…
 NOTION_DATABASE_ID=0113b1a0e499473082b72c86ab838ae6
+NOTION_DATA_SOURCE_ID=887f207e-5d49-44cd-8d1d-0ef48f4083c1
 RESEND_API_KEY=re_…          # optionnel, pour le mail
-NEXT_PUBLIC_SITE_URL=https://me49.vercel.app
+NEXT_PUBLIC_SITE_URL=https://mouvement-europeen49.fr
 ```
 
 L’intégration Notion doit avoir accès à cette seule base (pas besoin de tout le workspace).
