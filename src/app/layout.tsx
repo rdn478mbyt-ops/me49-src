@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: `%s · ${site.shortName}`,
   },
   description:
-    "Le Mouvement européen Maine-et-Loire rassemble celles et ceux qui ont envie de vivre l'Europe à Angers. Les soirs d'Europe ont lieu un mercredi sur deux à 20h, à La Cour. Premier rendez-vous de rentrée : mardi 8 septembre 2026.",
+    "Le Mouvement européen Maine-et-Loire rassemble celles et ceux qui ont envie de vivre l'Europe à Angers. Les soirs d'Europe ont lieu un mercredi sur deux à 20h, à La Cour, à partir du 16 septembre 2026.",
   applicationName: site.name,
   authors: [{ name: site.name }],
   openGraph: {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: site.name,
     title: `${site.signature} — ${site.name}`,
     description:
-      "Les soirs d'Europe à Angers : un mercredi sur deux, 20h, à La Cour. Premier rendez-vous de rentrée le mardi 8 septembre 2026.",
+      "Les soirs d'Europe à Angers : un mercredi sur deux, 20h, à La Cour, à partir du 16 septembre 2026.",
   },
 }
 

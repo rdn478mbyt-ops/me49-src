@@ -14,7 +14,7 @@ import { getCafeDisplay, getConfirmedVenue } from "@/lib/content"
 export const metadata: Metadata = {
   title: "Agenda",
   description:
-    "Agenda des soirs d'Europe à Angers : un mercredi sur deux à 20h, à La Cour. Premier rendez-vous de rentrée : mardi 8 septembre 2026.",
+    "Agenda des soirs d'Europe à Angers : un mercredi sur deux à 20h, à La Cour, à partir du mercredi 16 septembre 2026.",
 }
 
 export default function AgendaPage() {
@@ -65,8 +65,8 @@ export default function AgendaPage() {
             Automne 2026
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground">
-            Mardi 8 septembre, puis les mercredis 16 et 30 septembre, 14 et
-            28 octobre, 11 et 25 novembre, toujours à 20h
+            À partir du 16 septembre, un mercredi sur deux : 16 et 30
+            septembre, 14 et 28 octobre, 11 et 25 novembre, toujours à 20h
             {venue ? `, à ${venue.name}.` : "."}
           </p>
           <CafeSchedule className="mt-8" />

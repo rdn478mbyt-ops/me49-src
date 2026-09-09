@@ -26,7 +26,7 @@ export default function HomePage() {
             <p className="mt-8 max-w-xl text-lg leading-relaxed">
               Le Mouvement européen Maine-et-Loire rassemble celles et ceux qui
               ont envie de vivre l&apos;Europe à Angers. On se retrouve à{" "}
-              {place}, à 20h. {site.cafe.rhythm}
+              {place}. {site.cafe.rhythm}
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <RegisterCta />
@@ -47,9 +47,8 @@ export default function HomePage() {
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed">
             À partir du 16 septembre, un mercredi sur deux, à 20h, nous
-            ouvrons une table au bar-restaurant La Cour, 23 rue de la Roë. Le
-            premier rendez-vous de rentrée reste mardi 8 septembre. On y parle
-            de ce qui se passe ici et en Europe.
+            ouvrons une table au bar-restaurant La Cour, 23 rue de la Roë. On
+            y parle de ce qui se passe ici et en Europe.
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <article className="border border-border bg-white p-6 sm:p-8">

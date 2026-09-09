@@ -18,7 +18,7 @@ import { getCafeDisplay, getConfirmedVenue } from "@/lib/content"
 export const metadata: Metadata = {
   title: "Nous rencontrer",
   description:
-    "Les soirs d'Europe se tiennent un mercredi sur deux à 20h, à La Cour, 23 rue de la Roë à Angers. Premier rendez-vous de rentrée : mardi 8 septembre 2026.",
+    "Les soirs d'Europe se tiennent un mercredi sur deux à 20h, à La Cour, 23 rue de la Roë à Angers, à partir du mercredi 16 septembre 2026.",
 }
 
 export default function NousRencontrerPage() {
@@ -35,7 +35,7 @@ export default function NousRencontrerPage() {
       value: "soiree",
       question: "À quoi ressemble la soirée ?",
       answer:
-        "On se retrouve à La Cour. Certains soirs, un invité nous expose un sujet qui pourra par la suite alimenter nos discussions. Le 8 septembre, premier soir de la rentrée, se passe sans invité.",
+        "On se retrouve à La Cour. Certains soirs, un invité nous expose un sujet qui pourra par la suite alimenter nos discussions.",
     },
     {
       value: "membre",
@@ -53,7 +53,7 @@ export default function NousRencontrerPage() {
       value: "inscription",
       question: "Faut-il s'inscrire ?",
       answer:
-        "Pour le 8 septembre, un formulaire court nous aide à prévenir La Cour le matin même. Les dates suivantes sont publiées ici, à l'agenda.",
+        "Pour le prochain soir, un formulaire court nous aide à prévenir La Cour le matin même. Les dates suivantes sont publiées ici, à l'agenda.",
     },
   ]
 
@@ -79,11 +79,9 @@ export default function NousRencontrerPage() {
               libre&nbsp;: on se retrouve et l&apos;on parle. Quand un invité
               nous rejoint, il nous expose un sujet qui pourra par la suite
               alimenter nos discussions.
-              {cafe.session?.format === "libre" && cafe.session.date === site.registration.eventDate
-                ? " Le 8 septembre sera un soir libre, sans invité."
-                : cafe.session?.format === "libre" && cafe.session.note
-                  ? ` ${cafe.session.note}`
-                  : null}
+              {cafe.session?.format === "libre" && cafe.session.note
+                ? ` ${cafe.session.note}`
+                : null}
             </p>
             <p className="mt-6">
               <RegisterCta size="lg" />

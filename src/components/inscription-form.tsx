@@ -1,6 +1,7 @@
 import { site } from "@/config/site"
 import {
   formatFrenchDate,
+  formatFrenchDayMonth,
   getPublicSessionTitle,
   getSessionAfter,
   getSessionByDate,
@@ -31,7 +32,8 @@ export function InscriptionForm({
         </h2>
         <p className="mt-4 text-lg leading-relaxed">{thankYouLabel()}</p>
         <p className="mt-4 text-sm text-muted-foreground">
-          On se retrouve à La Cour, mardi 8 septembre à 20h.
+          On se retrouve à La Cour, {formatFrenchDate(site.registration.eventDate)}{" "}
+          à {site.cafe.timeLabel}.
         </p>
       </div>
     )
@@ -126,7 +128,7 @@ export function InscriptionForm({
           <p>
             <a
               className="underline underline-offset-2"
-              href={`mailto:${site.registration.notifyEmail}?subject=${encodeURIComponent("Inscription — Soir d'Europe 8 septembre")}`}
+              href={`mailto:${site.registration.notifyEmail}?subject=${encodeURIComponent(`Inscription — Soir d'Europe ${formatFrenchDayMonth(site.registration.eventDate)}`)}`}
             >
               Écrire à {site.registration.notifyEmail}
             </a>
@@ -138,7 +140,7 @@ export function InscriptionForm({
         {site.registration.cta}
       </Button>
       <p className="text-xs text-muted-foreground">
-        Ces informations servent à prévenir La Cour, le matin du 8, du nombre
+        Ces informations servent à prévenir La Cour, le matin même, du nombre
         de personnes.
       </p>
     </form>
@@ -174,9 +176,9 @@ function thankYouLabel(): string {
   const following = getSessionAfter(site.registration.eventDate)
   const currentLabel = current
     ? `${getPublicSessionTitle(current)}, ${formatFrenchDate(current.date)}, ${site.cafe.timeLabel}`
-    : `mardi 8 septembre 2026, ${site.cafe.timeLabel}`
+    : `${formatFrenchDate(site.registration.eventDate)}, ${site.cafe.timeLabel}`
   const followingLabel = following
     ? `${formatFrenchDate(following.date)}, ${site.cafe.timeLabel}`
-    : "mercredi 16 septembre 2026, 20h"
+    : site.cafe.cadence
   return `On vous attend le ${currentLabel}. Le soir suivant : ${followingLabel}, même lieu.`
 }

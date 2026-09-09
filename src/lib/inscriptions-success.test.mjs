@@ -60,6 +60,18 @@ describe("hasDurableChannel", () => {
     )
   })
 
+  it("le CTA public pointe vers le 16 septembre", async () => {
+    const { readFile } = await import("node:fs/promises")
+    const siteSource = await readFile(
+      new URL("../config/site.ts", import.meta.url),
+      "utf8"
+    )
+    assert.match(siteSource, /path: "\/16-septembre"/)
+    assert.match(siteSource, /cta: "S'inscrire au 16 septembre"/)
+    assert.match(siteSource, /eventDate: "2026-09-16"/)
+    assert.match(siteSource, /path: "\/8-septembre"/)
+  })
+
   it("un titre de travail n'est pas le titre public", () => {
     const session = { title: "Hello Europe", publicTitle: "Premier soir de la rentrée" }
     const publicTitle = session.publicTitle?.trim() || "Les soirs d'Europe"

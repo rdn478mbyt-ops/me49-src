@@ -80,6 +80,29 @@ export function formatFrenchDate(isoDate: string): string {
   }).format(date)
 }
 
+export function formatFrenchDayMonth(isoDate: string): string {
+  const date = new Date(`${isoDate}T12:00:00`)
+  return new Intl.DateTimeFormat("fr-FR", {
+    day: "numeric",
+    month: "long",
+  }).format(date)
+}
+
+export function capitalizeFr(value: string): string {
+  if (!value) return value
+  return value.charAt(0).toUpperCase() + value.slice(1)
+}
+
+export function getRegistrationEventTitle(): string {
+  return `${site.cafe.name} — ${formatFrenchDayMonth(site.registration.eventDate)}`
+}
+
+export function getUpcomingCafeDateList(): string {
+  return getUpcomingCafes()
+    .map((session) => formatFrenchDate(session.date))
+    .join(", ")
+}
+
 function startOfToday(): Date {
   const today = new Date()
   today.setHours(0, 0, 0, 0)

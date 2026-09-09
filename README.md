@@ -1,6 +1,6 @@
 # Mouvement Européen · Maine-et-Loire (ME49)
 
-Site du Mouvement européen Maine-et-Loire. Interface en français. Le rendez-vous public s’appelle **Les soirs d'Europe** : un mercredi sur deux, à 20h, à La Cour (Angers). Exception de rentrée : **mardi 8 septembre 2026**.
+Site du Mouvement européen Maine-et-Loire. Interface en français. Le rendez-vous public s’appelle **Les soirs d'Europe** : à partir du **16 septembre 2026**, un mercredi sur deux, à 20h, à La Cour (Angers). Le premier soir de la rentrée (mardi 8 septembre) est conservé en archive.
 
 Signature (une seule fois, à l’accueil) : **L’Europe se vit ici.**
 
@@ -26,11 +26,13 @@ Variable optionnelle pour le domaine public (sitemap, Open Graph) :
 NEXT_PUBLIC_SITE_URL=https://votre-domaine.fr
 ```
 
-## Inscriptions (8 septembre)
+## Inscriptions (16 septembre)
 
-Page publique : **`/8-septembre`**.
+Page publique : **`/16-septembre`**. Le CTA d’accueil, du bandeau et du panneau pointe ici.
 
-Chaque envoi réel doit atterrir dans la base Notion **Inscriptions — Soir d’Europe 8 sept** et, si `RESEND_API_KEY` est posé, dans la boîte `william.benaissa@gmail.com`. Un fichier local `data/` sert seulement en développement. Sur Vercel, un écriture dans `/tmp` ne compte pas : le formulaire n’affiche un succès que si Notion, Resend ou Blob a bien enregistré la ligne.
+**`/8-septembre`** reste en archive : le formulaire n’y figure plus, un lien mène au prochain soir.
+
+L’API **`POST /api/inscrire`** est inchangée. Chaque envoi écrit dans **la même base Notion** (identifiant ci-dessous) : le champ date **`Soir`** reçoit `2026-09-16`. Pas de nouvelle base, pas de second endpoint. Si `RESEND_API_KEY` est posé, un mail part aussi vers `william.benaissa@gmail.com`. Un fichier local `data/` sert seulement en développement. Sur Vercel, une écriture dans `/tmp` ne compte pas : le formulaire n’affiche un succès que si Notion ou Resend a bien enregistré la ligne.
 
 Variables côté serveur (Vercel, projet **`me49`**, celui de [me49.vercel.app](https://me49.vercel.app/)) :
 
@@ -38,7 +40,7 @@ Variables côté serveur (Vercel, projet **`me49`**, celui de [me49.vercel.app](
 NOTION_TOKEN=secret_ou_ntn_…
 NOTION_DATABASE_ID=0113b1a0e499473082b72c86ab838ae6
 RESEND_API_KEY=re_…          # optionnel, pour le mail
-NEXT_PUBLIC_SITE_URL=https://me49.vercel.app
+NEXT_PUBLIC_SITE_URL=https://mouvement-europeen49.fr
 ```
 
 L’intégration Notion doit avoir accès à cette seule base (pas besoin de tout le workspace).
@@ -107,6 +109,8 @@ Le wordmark « Maine-et-Loire » reste à côté du logo, en mention de section 
 
 | Champ | Effet |
 | --- | --- |
+| `registration` | CTA public : chemin, date ISO, libellé. Aujourd’hui le 16 septembre (`/16-septembre`). |
+| `archive` | Page conservée du 8 septembre (`/8-septembre`), avec lien vers le prochain soir. |
 | `contactEmail` | Vide = libellé `contact@ (à renseigner)`, sans lien. Une adresse active le `mailto:`. |
 | `adhererUrl` | Lien d’adhésion : site national du Mouvement européen (`https://mouvement-europeen.eu/adherer/`). Pas HelloAsso. |
 | `partners` | Partenaires locaux confirmés uniquement. |
@@ -119,6 +123,8 @@ Ne pas inventer de membres de bureau, de partenaires, d’adresses de siège, de
 
 - `/` Accueil
 - `/nous-rencontrer` Les soirs d'Europe, prochaine date, FAQ, accès (entrée de nav)
+- `/16-septembre` Inscription au prochain soir
+- `/8-septembre` Archive du premier soir de la rentrée
 - `/nos-idees` Mon Europe, idées, notes, contributions (états vides)
 - `/agir` Proposer → aider → adhérer
 - `/agenda` Soirs d’automne + états vides (conférences, projets, visites)
