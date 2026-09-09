@@ -46,10 +46,10 @@ export default function HomePage() {
             Un rendez-vous régulier, à La Cour
           </h2>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed">
-            À partir du 16 septembre, un mercredi sur deux, à 20h, nous
-            ouvrons une table au bar-restaurant La Cour, 23 rue de la Roë. Le
-            premier rendez-vous de rentrée reste mardi 8 septembre. On y parle
-            de ce qui se passe ici et en Europe.
+            Un mercredi sur deux, à 20h, nous ouvrons une table au
+            bar-restaurant La Cour, 23 rue de la Roë. Prochain soir&nbsp;:
+            mercredi 16 septembre. On y parle de ce qui se passe ici et en
+            Europe.
           </p>
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <article className="border border-border bg-white p-6 sm:p-8">
@@ -85,7 +85,7 @@ export default function HomePage() {
           </h2>
           <p className="mt-4 max-w-2xl text-muted-foreground">
             {site.cafe.rhythm} Les soirs suivants restent à La Cour, à la
-            même heure.
+            même heure : 30 septembre, 14 et 28 octobre, 11 et 25 novembre.
           </p>
           <ul className="mt-10 grid gap-6 md:grid-cols-3">
             {moments.map((moment) => (

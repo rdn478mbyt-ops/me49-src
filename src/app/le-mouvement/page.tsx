@@ -40,10 +40,10 @@ export default function LeMouvementPage() {
             </p>
             <p>
               Notre rendez-vous le plus régulier s&apos;appelle Les soirs
-              d&apos;Europe&nbsp;: un mercredi sur deux, à 20h, à La Cour. Le
-              premier rendez-vous de rentrée est mardi 8 septembre. Après
-              quelques soirées, celles et ceux qui le souhaitent peuvent
-              contribuer ou porter un projet.
+              d&apos;Europe&nbsp;: un mercredi sur deux, à 20h, à La Cour.
+              Prochain soir&nbsp;: mercredi 16 septembre. Après quelques
+              soirées, celles et ceux qui le souhaitent peuvent contribuer ou
+              porter un projet.
             </p>
           </div>
         </Container>
