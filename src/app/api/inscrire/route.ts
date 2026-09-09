@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 
-import { site } from "@/config/site"
+import { cafeCalendar, site } from "@/config/site"
 import { buildInscription, persistInscription } from "@/lib/inscriptions"
 
 export const runtime = "nodejs"
@@ -85,6 +85,12 @@ export async function POST(request: Request) {
     return fail(origin, "Le commentaire est un peu long (500 caractères).")
   }
 
+  const soir = clean(formData.get("soir"))
+  const allowedDates = new Set(cafeCalendar.map((session) => session.date))
+  const eventDate = allowedDates.has(soir)
+    ? soir
+    : site.registration.eventDate
+
   const record = buildInscription({
     prenom,
     nom,
@@ -92,6 +98,7 @@ export async function POST(request: Request) {
     personnes,
     premiereFois: premiereRaw === "oui",
     commentaire,
+    eventDate,
   })
 
   try {

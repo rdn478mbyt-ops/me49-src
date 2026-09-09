@@ -39,13 +39,13 @@ export async function GET(request: Request) {
     return new NextResponse(csvBody, {
       headers: {
         "Content-Type": "text/csv; charset=utf-8",
-        "Content-Disposition": `attachment; filename="inscriptions-8-septembre.csv"`,
+        "Content-Disposition": `attachment; filename="inscriptions-16-septembre.csv"`,
       },
     })
   }
 
   return NextResponse.json({
-    event: "Les soirs d'Europe · 8 septembre 2026",
+    event: "Les soirs d'Europe · 16 septembre 2026",
     inscriptions: summary.count,
     tetes: summary.heads,
     rows: summary.rows,

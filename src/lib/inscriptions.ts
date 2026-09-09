@@ -2,6 +2,7 @@ import { mkdir, appendFile, readFile } from "node:fs/promises"
 import path from "node:path"
 
 import { site } from "@/config/site"
+import { formatFrenchDate } from "@/lib/content"
 
 export type Inscription = {
   id: string
@@ -24,9 +25,11 @@ export type PersistResult = {
 }
 
 const EVENT_DATE = site.registration.eventDate
-const EVENT_TITLE = "Les soirs d'Europe — 8 septembre"
+export function inscriptionEventTitle(eventDate = EVENT_DATE): string {
+  return `Les soirs d'Europe — ${formatFrenchDate(eventDate)}`
+}
 
-/** Base «ée par William pour le 8 septembre. */
+/** Base créée par William pour le 8 septembre. */
 export const NOTION_DATABASE_ID =
   process.env.NOTION_DATABASE_ID ?? "0113b1a0e499473082b72c86ab838ae6"
 const NOTION_DATA_SOURCE_ID =
@@ -195,15 +198,15 @@ function clip(value: string, max: number): string {
 
 async function notifyByEmail(record: Inscription): Promise<boolean> {
   const to = site.registration.notifyEmail
-  const subject = `[ME49] +${record.personnes} · ${record.prenom} ${record.nom} · ${EVENT_TITLE}`
+  const subject = `[ME49] +${record.personnes} · ${record.prenom} ${record.nom} · ${record.eventTitle}`
   const body = formatInscriptionEmail(record)
   return notifyViaResend(to, subject, body)
 }
 
 export function formatInscriptionEmail(record: Inscription): string {
   return [
-    `Nouvelle inscription — ${EVENT_TITLE}`,
-    `Mardi 8 septembre 2026, 20h, La Cour, Angers.`,
+    `Nouvelle inscription — ${record.eventTitle}`,
+    `${formatFrenchDate(record.eventDate)}, 20h, La Cour, Angers.`,
     "",
     `Prénom : ${record.prenom}`,
     `Nom : ${record.nom}`,
@@ -327,7 +330,7 @@ function notionPageToInscription(page: {
     id: page.id,
     createdAt: page.created_time ?? new Date().toISOString(),
     eventDate: EVENT_DATE,
-    eventTitle: EVENT_TITLE,
+    eventTitle: inscriptionEventTitle(EVENT_DATE),
     prenom,
     nom,
     email,
@@ -397,12 +400,19 @@ export function buildInscription(input: {
   personnes: number
   premiereFois: boolean
   commentaire: string
+  eventDate?: string
 }): Inscription {
+  const eventDate = input.eventDate ?? EVENT_DATE
   return {
     id: newInscriptionId(),
     createdAt: new Date().toISOString(),
-    eventDate: EVENT_DATE,
-    eventTitle: EVENT_TITLE,
-    ...input,
+    eventDate,
+    eventTitle: inscriptionEventTitle(eventDate),
+    prenom: input.prenom,
+    nom: input.nom,
+    email: input.email,
+    personnes: input.personnes,
+    premiereFois: input.premiereFois,
+    commentaire: input.commentaire,
   }
 }

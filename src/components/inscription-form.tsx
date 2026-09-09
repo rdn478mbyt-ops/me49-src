@@ -31,7 +31,7 @@ export function InscriptionForm({
         </h2>
         <p className="mt-4 text-lg leading-relaxed">{thankYouLabel()}</p>
         <p className="mt-4 text-sm text-muted-foreground">
-          On se retrouve à La Cour, mardi 8 septembre à 20h.
+          On se retrouve à La Cour, mercredi 16 septembre à 20h.
         </p>
       </div>
     )
@@ -39,6 +39,7 @@ export function InscriptionForm({
 
   return (
     <form action="/api/inscrire" method="post" className="space-y-5" noValidate>
+      <input type="hidden" name="soir" value={site.registration.eventDate} />
       <div className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
         <label htmlFor="website">Site web</label>
         <input id="website" name="website" tabIndex={-1} autoComplete="off" />
@@ -126,7 +127,7 @@ export function InscriptionForm({
           <p>
             <a
               className="underline underline-offset-2"
-              href={`mailto:${site.registration.notifyEmail}?subject=${encodeURIComponent("Inscription — Soir d'Europe 8 septembre")}`}
+              href={`mailto:${site.registration.notifyEmail}?subject=${encodeURIComponent("Inscription — Soir d'Europe 16 septembre")}`}
             >
               Écrire à {site.registration.notifyEmail}
             </a>
@@ -138,7 +139,7 @@ export function InscriptionForm({
         {site.registration.cta}
       </Button>
       <p className="text-xs text-muted-foreground">
-        Ces informations servent à prévenir La Cour, le matin du 8, du nombre
+        Ces informations servent à prévenir La Cour, le matin du 16, du nombre
         de personnes.
       </p>
     </form>
@@ -174,7 +175,7 @@ function thankYouLabel(): string {
   const following = getSessionAfter(site.registration.eventDate)
   const currentLabel = current
     ? `${getPublicSessionTitle(current)}, ${formatFrenchDate(current.date)}, ${site.cafe.timeLabel}`
-    : `mardi 8 septembre 2026, ${site.cafe.timeLabel}`
+    : `mercredi 16 septembre 2026, ${site.cafe.timeLabel}`
   const followingLabel = following
     ? `${formatFrenchDate(following.date)}, ${site.cafe.timeLabel}`
     : "mercredi 16 septembre 2026, 20h"
