@@ -62,7 +62,7 @@ export default function NousRencontrerPage() {
       <PageHeader kicker={site.cafe.name} title="Nous rencontrer">
         {site.cafe.rhythm}
         {cafe.hasDate
-          ? ` Le prochain, c'est le ${cafe.title.toLowerCase()}, le ${cafe.headline}.`
+          ? ` Le prochain, c'est le ${cafe.headline}.`
           : ` ${site.cafe.cadence}.`}
       </PageHeader>
 

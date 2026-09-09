@@ -26,7 +26,7 @@ export default function AgendaPage() {
       <PageHeader kicker="Agenda" title="Les rendez-vous de l'automne">
         {site.cafe.rhythm}
         {cafe.hasDate
-          ? ` Nous vous attendons le ${cafe.when}.`
+          ? ` Nous vous attendons le ${cafe.headline}.`
           : ` ${site.cafe.cadence}.`}
       </PageHeader>
 
